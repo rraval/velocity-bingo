@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.25in,landscape]{geometry}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+\usepackage{array}
+
+\defaultfontfeatures{Scale=MatchUppercase,Ligatures=TeX}
+\setmainfont{TeX Gyre Heros}
+
+\newlength{\bMargin}
+\newlength{\bWidth}
+\newlength{\bHeight}
+\newlength{\bCellWidth}
+\newlength{\bCellHeight}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\arrayrulewidth}{1pt}
+
+\pagestyle{empty}
+
+\newcolumntype{?}{!{\vrule width \bBorder}}
+\newcolumntype{P}{%
+    @{\parbox[c][\bCellHeight]{\tabcolsep}{}}
+    >{\centering\arraybackslash}
+    m{\bCellWidth}
+}
+
+\begin{document}
+\setlength{\bMargin}{0.25in}
+\setlength{\bCellPadding}{10pt}
+\setlength{\bWidth}{0.5\dimexpr\textwidth-\bMargin}
+\setlength{\bHeight}{0.5\dimexpr\textheight-\bMargin}
+\setlength{\bCellWidth}{0.2\dimexpr\bWidth-6\arrayrulewidth}
+\setlength{\bCellHeight}{0.2\dimexpr\bHeight-6\arrayrulewidth}
+
+\begin{tabular}{|P|P|}
+\hline
+Foobar & Something else \\
+\hline
+Barfoo & adf dkfajd \\
+\hline
+\end{tabular}
+
+\end{document}
