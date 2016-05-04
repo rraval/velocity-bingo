@@ -71,14 +71,14 @@ def writeTable(master):
     yield Safe(r'\end{tabular}')
 
 WORDS = '''
-Machine learning... Somehow
-Our primary market: students
+Machine Learning... Somehow
+Our Primary Market: students
 Social for...
 Uber for...
 Tinder for…
 AirBnB for...
-We'll sell analytics!
-Hyper local
+We'll Sell Analytics!
+Hyper Local
 "Disrupt"
 "1% of X billion market..."
 "Revolutionize"
@@ -90,8 +90,8 @@ Hyper local
 Chatbot
 Food
 Carsharing
-Transit app
-Solve teaching
+Transit App
+Solve Teaching / Education
 VR
 Commercial Home Services
 Wearables
@@ -99,34 +99,34 @@ Smart clothing
 Search engine
 Grocery
 NFC / QR / RFID
-Crowd sourcing
-Meal tracking
+Crowd Sourcing
+Meal Tracking
 Gamification
-Internet of things
+Internet of Things
 Music
 Dating
-Two sided market
-Note taking / to-do
+Two Sided Market
+Note Taking / To-Do
 "Freemium"
 "Curated"
 "Eco-system"
-Life tracking
-Fashion / clothing apps
-Ship things from China!
-Ant farm
+Life Tracking
+Fashion / Clothing Apps
+Ship Things from China!
+Ant Farm
 Parking
 Email
-Project management
-Accounting / taxes
+Project Management
+Accounting / Taxes
 "Software as a service" / "SaaS"
 Environmental / Green
 Global Energy
 Sales CRM
-Photo sharing app
+Photo Sharing App
 Agriculture
 Weed
 Book a Meeting
-Tools for startups
+Tools for Startups
 Brainstorming
 '''.strip().split('\n')
 
