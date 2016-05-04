@@ -28,9 +28,9 @@ def writeMain(master):
 
         \newcolumntype{?}{!{\vrule width \bBorder}}
         \newcolumntype{P}{%
-            @{\parbox[c][\bCellHeight]{\tabcolsep}{}}
+            @{\parbox[c][\bCellHeight]{0pt}{}}
             >{\centering\arraybackslash}
-            m{\bCellWidth}
+            m{\dimexpr\bCellWidth}
         }
 
         \begin{document}
@@ -58,7 +58,10 @@ def writeTable(master):
     yield Safe(r'\hline{}')
 
     for i, w in enumerate(words):
+        yield Safe(r'\parbox{\dimexpr\bCellWidth-6pt\relax}{\centering{}')
         yield w
+        yield Safe(r'}')
+
         if (i % 5) == 4:
             yield Safe(r'\\')
             yield Safe(r'\hline ')
@@ -90,7 +93,7 @@ Carsharing
 Transit app
 Solve teaching
 VR
-Commercial home services (Homejoy, Homefed)
+Commercial Home Services
 Wearables
 Smart clothing
 Search engine
@@ -122,7 +125,7 @@ Sales CRM
 Photo sharing app
 Agriculture
 Weed
-BookAMeeting
+Book a Meeting
 Tools for startups
 Brainstorming
 '''.strip().split('\n')
