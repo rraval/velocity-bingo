@@ -1,7 +1,7 @@
 import random
 from writer import Safe, runWriter, latex_escape
 
-def writeMain(master):
+def writeMain(master, pages):
     yield Safe(r'''
         \documentclass[11pt]{article}
         \usepackage[margin=0.25in,landscape]{geometry}
@@ -41,7 +41,7 @@ def writeMain(master):
         \setlength{\bCellHeight}{0.2\dimexpr\bHeight-6\arrayrulewidth}
     ''')
 
-    for i in range(12):
+    for i in range(pages * 4):
         yield from writeTable(master)
         yield Safe(r'\allowbreak\hfill{}')
 
@@ -132,4 +132,4 @@ Brainstorming
 
 if __name__ == '__main__':
     import sys
-    runWriter(sys.stdout, writeMain(WORDS), latex_escape)
+    runWriter(sys.stdout, writeMain(WORDS, 20), latex_escape)
