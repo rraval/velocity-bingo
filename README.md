@@ -11,6 +11,9 @@ $ python3 bingo.py > bingo.tex
 $ lualatex bingo.tex
 ```
 
+To add your own phrases, edit [phrases.txt](./phrases.txt), with one phrase per
+line.
+
 License
 -------
 

@@ -1,7 +1,7 @@
 import random
 from writer import Safe, runWriter, latex_escape
 
-def writeMain(master, pages):
+def writeMain(phrases, pages):
     yield Safe(r'''
         \documentclass[11pt]{article}
         \usepackage[margin=0.25in,landscape]{geometry}
@@ -42,7 +42,7 @@ def writeMain(master, pages):
     ''')
 
     for i in range(pages * 4):
-        yield from writeTable(master)
+        yield from writeTable(phrases)
         yield Safe(r'\allowbreak\hfill{}')
 
         if (i % 2) == 1:
@@ -50,14 +50,14 @@ def writeMain(master, pages):
 
     yield Safe(r'\end{document}')
 
-def writeTable(master):
-    words = random.sample(master, 24)
-    words = words[:12] + ['"Um" or awkward pause'] + words[12:]
+def writeTable(phrases):
+    sample = random.sample(phrases, 24)
+    sample = sample[:12] + ['"Um" or awkward pause'] + sample[12:]
 
     yield Safe(r'\begin{tabular}{|P|P|P|P|P|}')
     yield Safe(r'\hline{}')
 
-    for i, w in enumerate(words):
+    for i, w in enumerate(sample):
         yield Safe(r'\parbox{\dimexpr\bCellWidth-6pt\relax}{\centering{}')
         yield w
         yield Safe(r'}')
@@ -70,66 +70,10 @@ def writeTable(master):
 
     yield Safe(r'\end{tabular}')
 
-WORDS = '''
-Machine Learning... Somehow
-Our Primary Market: students
-Social for...
-Uber for...
-Tinder for…
-AirBnB for...
-We'll Sell Analytics!
-Hyper Local
-"Disrupt"
-"1% of X billion market..."
-"Revolutionize"
-"Hacker"
-"Hustler"
-"Rock star"
-"Drones"
-"Autonomous"
-Chatbot
-Food
-Carsharing
-Transit App
-Solve Teaching / Education
-VR
-Commercial Home Services
-Wearables
-Smart clothing
-Search engine
-Grocery
-NFC / QR / RFID
-Crowd Sourcing
-Meal Tracking
-Gamification
-Internet of Things
-Music
-Dating
-Two Sided Market
-Note Taking / To-Do
-"Freemium"
-"Curated"
-"Eco-system"
-Life Tracking
-Fashion / Clothing Apps
-Ship Things from China!
-Ant Farm
-Parking
-Email
-Project Management
-Accounting / Taxes
-"Software as a service" / "SaaS"
-Environmental / Green
-Global Energy
-Sales CRM
-Photo Sharing App
-Agriculture
-Weed
-Book a Meeting
-Tools for Startups
-Brainstorming
-'''.strip().split('\n')
-
 if __name__ == '__main__':
     import sys
-    runWriter(sys.stdout, writeMain(WORDS, 20), latex_escape)
+
+    with open('phrases.txt') as fp:
+        phrases = [l.strip() for l in fp.readlines()]
+
+    runWriter(sys.stdout, writeMain(phrases, pages=20), latex_escape)
